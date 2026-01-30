@@ -1,0 +1,22 @@
+[
+  {
+    "proxy_domain": "jupiter",
+    "ip": "192.168.0.51",
+    "domains": [
+      "pihole01",
+      "baby",
+      "dispatcharr",
+      "dockge",
+      "it-tools",
+      "jetlog",
+      "monitor",
+      "pluto-tv",
+      "pve01",
+      "roms",
+      "router",
+      "spoolman",
+      "storage",
+      "traefik-dashboard"
+    ]
+  }
+]

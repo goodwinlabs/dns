@@ -1,0 +1,15 @@
+---
+version: '3'
+
+tasks:
+  init:
+    cmds:
+      - terraform init -backend-config=backend.tfvars {{ .CLI_ARGS}}
+
+  plan:
+    cmds:
+      - terraform plan -parallelism=1 {{ .CLI_ARGS }}
+
+  apply:
+    cmds:
+      - terraform apply -parallelism=1 -auto-approve {{ .CLI_ARGS }}
