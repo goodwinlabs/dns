@@ -8,9 +8,15 @@ variable "zone_id" {
   type        = string
 }
 
-variable "ip" {
-  description = "IP address for the A record"
+variable "base_record" {
+  description = "Use an existing DNS record as the base for this proxy (optional)"
   type        = string
+}
+
+variable "ip" {
+  description = "IP address for an A record"
+  type        = string
+  default     = null
 }
 
 variable "forward_host" {

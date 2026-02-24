@@ -1,5 +1,5 @@
 locals {
-  internal_dns = jsondecode(file("${path.module}/internal-dns.json"))
+  internal_dns = yamldecode(file("${path.module}/internal-dns.yaml"))
 
   # Map internal_dns keyed by proxy_domain for easy for_each usage
   internal_dns_map = { for entry in local.internal_dns : entry.proxy_domain => entry }

@@ -1,8 +1,8 @@
 resource "cloudflare_dns_record" "record" {
   zone_id = var.zone_id
   name    = var.name
-  content = var.ip
-  type    = "A"
+  content = var.base_record != null ? var.base_record : var.ip
+  type    = var.base_record != null ? "CNAME" : "A"
   ttl     = 1
   proxied = var.proxied
 }

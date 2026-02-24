@@ -1,7 +1,11 @@
 terraform {
   required_version = ">=1.13"
 
-  backend "s3" {}
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+
+  # backend "s3" {}
 
   required_providers {
     pihole = {

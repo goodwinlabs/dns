@@ -1,0 +1,21 @@
+- proxy_domain: jupiter
+  ip: 10.0.2.51
+  domains:
+    - pihole01
+    - baby
+    - calendar
+    - dispatcharr
+    - dockge
+    - home
+    - it-tools
+    - jetlog
+    - monitor
+    - pluto-tv
+    - pve01
+    - roms
+    - spoolman
+    - storage
+    - tdarr
+    - traefik-dashboard
+    - z2m
+    - zigbee
