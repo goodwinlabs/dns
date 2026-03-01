@@ -8,9 +8,14 @@ terraform {
   # backend "s3" {}
 
   required_providers {
+    # pihole = {
+    #   source  = "ryanwholey/pihole"
+    #   version = "2.0.0-beta.1"
+    # }
+
     pihole = {
-      source  = "ryanwholey/pihole"
-      version = "2.0.0-beta.1"
+      source  = "iolave/pihole"
+      version = "0.2.2"
     }
 
     nginxproxymanager = {
