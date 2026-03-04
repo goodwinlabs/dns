@@ -11,7 +11,7 @@ car_inv:
   forward_port: 9245
 home_inv:
   name: home-inv
-  forward_host: 192.168.0.45
+  forward_host: 10.0.5.23
   forward_port: 7745
 photos:
   name: photos

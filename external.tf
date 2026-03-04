@@ -44,7 +44,6 @@ module "proxy_service" {
   name        = each.value.name
   zone_id     = data.cloudflare_zone.ryanjgoodwin_com.id
   base_record = cloudflare_dns_record.base.name
-  # ip          = sensitive(data.http.public_ip.response_body)
 
   forward_host            = each.value.forward_host
   forward_port            = each.value.forward_port
@@ -56,3 +55,13 @@ module "proxy_service" {
   advanced_config         = lookup(each.value, "advanced_config", "")
 }
 
+resource "pihole_dns_record" "external_proxy" {
+  domain = "proxy.ryanjgoodwin.com"
+  ip     = "10.0.5.66"
+}
+
+resource "pihole_cname_record" "external_proxy_cache" {
+  for_each = local.services
+  domain   = "${each.value.name}.${data.cloudflare_zone.ryanjgoodwin_com.name}"
+  target   = pihole_dns_record.external_proxy.domain
+}

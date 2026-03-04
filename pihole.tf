@@ -3,7 +3,7 @@ resource "pihole_ad_blocker_status" "status" {
 }
 
 resource "pihole_group" "work" {
-  enabled = true
-  name = "Work"
+  enabled     = true
+  name        = "Work"
   description = "Devices used for work"
 }
