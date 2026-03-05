@@ -12,7 +12,7 @@ locals {
 
 resource "cloudflare_dns_record" "base" {
   zone_id = data.cloudflare_zone.ryanjgoodwin_com.id
-  name    = "home"
+  name    = "proxy.${data.cloudflare_zone.ryanjgoodwin_com.name}"
   content = sensitive(data.http.public_ip.response_body)
   type    = "A"
   ttl     = 1
@@ -21,7 +21,7 @@ resource "cloudflare_dns_record" "base" {
 
 resource "cloudflare_dns_record" "root" {
   zone_id = data.cloudflare_zone.ryanjgoodwin_com.id
-  name    = "@"
+  name    = data.cloudflare_zone.ryanjgoodwin_com.name
   content = "192.1.2.1"
   type    = "A"
   ttl     = 1
@@ -30,7 +30,7 @@ resource "cloudflare_dns_record" "root" {
 
 resource "cloudflare_dns_record" "www" {
   zone_id = data.cloudflare_zone.ryanjgoodwin_com.id
-  name    = "www"
+  name    = "www.${data.cloudflare_zone.ryanjgoodwin_com.name}"
   content = data.cloudflare_zone.ryanjgoodwin_com.name
   type    = "CNAME"
   ttl     = 1
@@ -43,7 +43,7 @@ module "proxy_service" {
 
   name        = each.value.name
   zone_id     = data.cloudflare_zone.ryanjgoodwin_com.id
-  base_record = cloudflare_dns_record.base.name
+  base_record = "${cloudflare_dns_record.base.name}"
 
   forward_host            = each.value.forward_host
   forward_port            = each.value.forward_port
